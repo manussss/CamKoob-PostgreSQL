@@ -10,13 +10,28 @@ public class Order : Entity
         OrderItems = [];
     }
 
+    public Order(string description, List<OrderItem> orderItems)
+    {
+        Description = description;
+        OrderItems = orderItems;
+    }
+
+    [JsonConstructor]
+    public Order(Guid id, DateTime createdAt, string description, List<OrderItem> orderItems)
+    {
+        Id = id;
+        CreatedAt = createdAt;
+        Description = description;
+        OrderItems = orderItems;
+    }
+
     public void SetDescription(string description)
     {
         Description = description;
     }
 
-    public void AddItems(List<OrderItem> items)
+    public void SetItems(List<OrderItem> items)
     {
-        OrderItems.AddRange(items);
+        OrderItems = items;
     }
 }
