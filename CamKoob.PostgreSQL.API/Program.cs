@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddRepositories();
 
 var app = builder.Build();
 
@@ -13,29 +14,50 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+app.MapPost("/api/v1/orders", async (
+    [FromBody] OrderDTO order,
+    [FromServices] IOrderRepository orderRepository
+) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    await orderRepository.CreateAsync(new Order(order.Description, order.OrderItems));
 
-app.MapGet("/weatherforecast", () =>
+    return Results.Created();
+});
+
+app.MapGet("/api/v1/orders", async (
+    [FromServices] IOrderRepository orderRepository
+) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+    var orders = await orderRepository.GetAsync();
 
-app.Run();
+    if (orders is null || !orders.Any())
+        return Results.NotFound();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+    return Results.Ok(orders);
+});
+
+app.MapGet("/api/v1/orders/{id}", async (
+    [FromRoute] Guid id,
+    [FromServices] IOrderRepository orderRepository
+) =>
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+    var order = await orderRepository.GetByIdAsync(id);
+
+    if (order is null)
+        return Results.NotFound();
+
+    return Results.Ok(order);
+});
+
+app.MapPatch("/api/v1/orders/{id}", async (
+    Guid id,
+    [FromBody] OrderDTO newOrder,
+    [FromServices] IOrderRepository orderRepository
+) =>
+{
+    await orderRepository.UpdateAsync(id, new Order(newOrder.Description, newOrder.OrderItems));
+
+    return Results.Ok();
+});
+
+await app.RunAsync();

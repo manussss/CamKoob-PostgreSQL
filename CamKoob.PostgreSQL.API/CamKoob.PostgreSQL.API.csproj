@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="../CamKoob.PostgreSQL.Application/CamKoob.PostgreSQL.Application.csproj" />
+    <ProjectReference Include="../CamKoob.PostgreSQL.Domain/CamKoob.PostgreSQL.Domain.csproj" />
     <ProjectReference Include="../CamKoob.PostgreSQL.IoC/CamKoob.PostgreSQL.IoC.csproj" />
   </ItemGroup>
 
