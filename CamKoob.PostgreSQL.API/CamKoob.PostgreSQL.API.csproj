@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.14" />
-    <PackageReference Include="Npgsql" Version="3.1.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../CamKoob.PostgreSQL.IoC/CamKoob.PostgreSQL.IoC.csproj" />
   </ItemGroup>
 
 </Project>

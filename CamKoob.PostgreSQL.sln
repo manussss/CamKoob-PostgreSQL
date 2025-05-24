@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamKoob.PostgreSQL.API", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamKoob.PostgreSQL.Domain", "CamKoob.PostgreSQL.Domain\CamKoob.PostgreSQL.Domain.csproj", "{B2BDA7FE-2996-4B83-A263-7AFB195B6C8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamKoob.PostgreSQL.Infra", "CamKoob.PostgreSQL.Infra\CamKoob.PostgreSQL.Infra.csproj", "{9F9B868B-171E-4C0D-A794-D43F0ADB8628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamKoob.PostgreSQL.IoC", "CamKoob.PostgreSQL.IoC\CamKoob.PostgreSQL.IoC.csproj", "{2C039EED-905A-4DAE-A130-E9B58628816E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{B2BDA7FE-2996-4B83-A263-7AFB195B6C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2BDA7FE-2996-4B83-A263-7AFB195B6C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2BDA7FE-2996-4B83-A263-7AFB195B6C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F9B868B-171E-4C0D-A794-D43F0ADB8628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F9B868B-171E-4C0D-A794-D43F0ADB8628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F9B868B-171E-4C0D-A794-D43F0ADB8628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F9B868B-171E-4C0D-A794-D43F0ADB8628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C039EED-905A-4DAE-A130-E9B58628816E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C039EED-905A-4DAE-A130-E9B58628816E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C039EED-905A-4DAE-A130-E9B58628816E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C039EED-905A-4DAE-A130-E9B58628816E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
