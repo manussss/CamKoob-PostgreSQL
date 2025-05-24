@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS orders (
+    id UUID PRIMARY KEY,
+    content JSONB NOT NULL
+);
